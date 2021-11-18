@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
+
 import Form from "../Form/index";
 import ToDos from "../ToDos/index";
 import CheckAllButton from "../CheckAllButton/index";
 import ClearCheckedButton from "../ClearCheckedButton/index";
+import CountUnCheckedToDos from "../CountUnCheckedToDos";
 
 import "./index.css";
 
 const App = () => {
   const [toDoList, setToDoList] = useState(() => {
-    return JSON.parse(window.localStorage.getItem("toDolist")) || [];
+    return JSON.parse(localStorage.getItem("toDolist") || "[]");
   });
 
   useEffect(() => {
@@ -16,16 +18,10 @@ const App = () => {
   }, [toDoList]);
 
   const deleteToDo = (index) => {
-    if (toDoList.length === 1) {
-      setToDoList([]);
-    } else {
-      const clearArr = toDoList
-        .slice(0, index)
-        .concat(toDoList.slice(index + 1));
-
-      setToDoList([...clearArr]);
-    }
+    const clearArr = toDoList.slice(0, index).concat(toDoList.slice(index + 1));
+    setToDoList([...clearArr]);
   };
+
   const onSubmit = (value) => {
     setToDoList([{ value, checked: true }, ...toDoList]);
   };
@@ -44,13 +40,13 @@ const App = () => {
   return (
     <>
       <CheckAllButton changeToDoList={changeToDoList} toDoList={toDoList} />
-
       <Form onSubmit={onSubmit} />
       <ToDos
         toDoList={toDoList}
         deleteToDo={deleteToDo}
         takeChekedProp={takeChekedProp}
       />
+      <CountUnCheckedToDos toDoList={toDoList} />
       <ClearCheckedButton toDoList={toDoList} changeToDoList={changeToDoList} />
     </>
   );
