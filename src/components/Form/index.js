@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./index.css";
 
 const Form = ({ onSubmit }) => {
   const [value, setValue] = useState(localStorage.getItem("value") || "");
@@ -19,6 +20,7 @@ const Form = ({ onSubmit }) => {
 
   return (
     <input
+      className="input"
       value={value}
       onChange={takeValue}
       onKeyPress={pressEnter}

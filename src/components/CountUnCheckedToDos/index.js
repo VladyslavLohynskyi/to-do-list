@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./index.css";
 
 const CountUnCheckedToDos = ({ toDoList }) => {
   const [countUnCheckedToDos, setCountUnCheckedToDos] = useState(0);
@@ -11,8 +12,12 @@ const CountUnCheckedToDos = ({ toDoList }) => {
     });
     setCountUnCheckedToDos(counter);
   }, [toDoList]);
-
-  return <p>{countUnCheckedToDos} items left</p>;
+  const className = () => {
+    if (!countUnCheckedToDos) {
+      return "displayNone";
+    }
+  };
+  return <p className={className()}>{countUnCheckedToDos} items left</p>;
 };
 
 export default CountUnCheckedToDos;

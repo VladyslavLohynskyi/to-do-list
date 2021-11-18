@@ -77,6 +77,7 @@ const ToDos = ({ toDoList, deleteToDo, takeChekedProp }) => {
         onClickCheked={onClickCheked}
         onClickUnCheked={onClickUnCheked}
         onClickAll={onClickAll}
+        toDoList={toDoList}
       />
     </div>
   );

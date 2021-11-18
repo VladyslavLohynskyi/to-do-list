@@ -1,8 +1,17 @@
 import Button from "../Button";
+import "./index.css";
 
-const FilterButtons = ({ onClickAll, onClickUnCheked, onClickCheked }) => {
+const FilterButtons = ({
+  onClickAll,
+  onClickUnCheked,
+  onClickCheked,
+  toDoList,
+}) => {
+  const className = () => {
+    if (!toDoList.length) return "displayNone";
+  };
   return (
-    <div>
+    <div className={className()}>
       <Button onClick={onClickCheked} name="checked" />
       <Button onClick={onClickUnCheked} name="unchecked" />
       <Button onClick={onClickAll} name="all" />
