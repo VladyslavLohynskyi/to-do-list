@@ -1,24 +1,28 @@
 import "./index.css";
+import Button from "../Button";
 
-const ClearCheckedButton = ({ toDoList, deleteToDo }) => {
+const ClearCheckedButton = ({ toDoList, changeToDoList }) => {
   const changeClassName = () => {
-    if (toDoList.some((el) => el.checked === false)) {
-      return "";
-    } else return "buttonClearDisplay";
+    if (!toDoList.some((el) => !el.checked)) {
+      return "buttonClearDisplay";
+    }
   };
 
   const findIndexToDelete = () => {
+    const ClearCheckedToDos = [];
     toDoList.forEach((element) => {
-      if (element.checked === false) {
-        const index = toDoList.indexOf(element);
-        deleteToDo(index);
+      if (element.checked) {
+        ClearCheckedToDos.push(element);
       }
     });
+    changeToDoList(ClearCheckedToDos);
   };
   return (
-    <button className={changeClassName()} onClick={findIndexToDelete}>
-      Clear checked
-    </button>
+    <Button
+      className={changeClassName()}
+      onClick={findIndexToDelete}
+      name="Clear checked"
+    />
   );
 };
 export default ClearCheckedButton;

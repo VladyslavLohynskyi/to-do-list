@@ -1,14 +1,15 @@
-const CheckAllButton = ({ checkedAll, toDoList }) => {
+import Button from "../Button";
+
+const CheckAllButton = ({ changeToDoList, toDoList }) => {
   return (
-    <button
+    <Button
+      name="CheckAllButton"
       onClick={() =>
-        checkedAll(
+        changeToDoList(
           toDoList.map((toDo) => (toDo = { checked: false, value: toDo.value }))
         )
       }
-    >
-      CheckAllButton
-    </button>
+    />
   );
 };
 

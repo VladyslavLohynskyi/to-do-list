@@ -16,7 +16,7 @@ const App = () => {
   }, [toDoList]);
 
   const deleteToDo = (index) => {
-    if (toDoList === 1) {
+    if (toDoList.length === 1) {
       setToDoList([]);
     } else {
       const clearArr = toDoList
@@ -37,13 +37,13 @@ const App = () => {
     setToDoList(checkedArr);
   };
 
-  const checkedAll = (arr) => {
-    setToDoList(arr);
+  const changeToDoList = (newToDoList) => {
+    setToDoList(newToDoList);
   };
 
   return (
     <>
-      <CheckAllButton checkedAll={checkedAll} toDoList={toDoList} />
+      <CheckAllButton changeToDoList={changeToDoList} toDoList={toDoList} />
 
       <Form onSubmit={onSubmit} />
       <ToDos
@@ -51,7 +51,7 @@ const App = () => {
         deleteToDo={deleteToDo}
         takeChekedProp={takeChekedProp}
       />
-      <ClearCheckedButton toDoList={toDoList} deleteToDo={deleteToDo} />
+      <ClearCheckedButton toDoList={toDoList} changeToDoList={changeToDoList} />
     </>
   );
 };

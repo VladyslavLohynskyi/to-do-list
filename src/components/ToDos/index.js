@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ToDo from "../ToDo/index";
+import Button from "../Button";
 
 const ToDos = ({ toDoList, deleteToDo, takeChekedProp }) => {
   const [buttonValue, setButtonValue] = useState({
@@ -71,9 +72,9 @@ const ToDos = ({ toDoList, deleteToDo, takeChekedProp }) => {
   return (
     <div>
       {outputToDos()}
-      <button onClick={onClickCheked}>checked</button>
-      <button onClick={onClickUnCheked}>unchecked</button>
-      <button onClick={onClickAll}>all</button>
+      <Button onClick={onClickCheked} name="checked" />
+      <Button onClick={onClickUnCheked} name="unchecked" />
+      <Button onClick={onClickAll} name="all" />
     </div>
   );
 };
