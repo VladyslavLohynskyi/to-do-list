@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Button from "../Button";
+import "./index.css";
 
 const ToDo = ({ deleteToDo, index, takeChekedProp, toDo }) => {
   const [checked, setChecked] = useState(false);
@@ -13,22 +15,21 @@ const ToDo = ({ deleteToDo, index, takeChekedProp, toDo }) => {
   };
 
   return (
-    <div>
-      <p>
+    <div className="outputToDo">
+      <div>
         <input
           type="checkBox"
           onChange={changeCheked}
           checked={!toDo.checked}
         />
-        {toDo.value + " "}
-        <button
-          onClick={() => {
-            deleteToDo(index);
-          }}
-        >
-          Delete
-        </button>
-      </p>
+        <p class="toDoValue">{toDo.value + " "}</p>
+      </div>
+      <Button
+        onClick={() => {
+          deleteToDo(index);
+        }}
+        name="Delete"
+      />
     </div>
   );
 };

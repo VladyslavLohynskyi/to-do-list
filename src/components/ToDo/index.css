@@ -1,0 +1,11 @@
+.outputToDo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0px 0px 0px;
+}
+
+.toDoValue {
+  display: inline-block;
+  margin: 0px 0px 0px 20px;
+}

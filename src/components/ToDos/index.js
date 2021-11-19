@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ToDo from "../ToDo/index";
+import "./index.css";
 
 import FilterButtons from "../FilterButtons";
 
@@ -71,15 +72,15 @@ const ToDos = ({ toDoList, deleteToDo, takeChekedProp }) => {
   };
 
   return (
-    <div>
-      {outputToDos()}
+    <>
+      <div className="outputToDos">{outputToDos()}</div>
       <FilterButtons
         onClickCheked={onClickCheked}
         onClickUnCheked={onClickUnCheked}
         onClickAll={onClickAll}
         toDoList={toDoList}
       />
-    </div>
+    </>
   );
 };
 

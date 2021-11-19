@@ -1,6 +1,8 @@
+import "./index.css";
+
 const Button = ({ onClick, className, name }) => {
   return (
-    <button onClick={onClick} className={className}>
+    <button onClick={onClick} className={`btn ${className}`}>
       {name}
     </button>
   );

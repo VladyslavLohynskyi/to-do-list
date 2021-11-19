@@ -7,7 +7,7 @@ const CheckAllButton = ({ changeToDoList, toDoList }) => {
   };
   return (
     <Button
-      className={className()}
+      className={`btnAll ${className()}`}
       name="CheckAllButton"
       onClick={() =>
         changeToDoList(

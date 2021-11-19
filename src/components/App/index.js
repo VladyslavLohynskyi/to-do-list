@@ -39,8 +39,10 @@ const App = () => {
 
   return (
     <>
-      <CheckAllButton changeToDoList={changeToDoList} toDoList={toDoList} />
-      <Form onSubmit={onSubmit} />
+      <div className="form">
+        <CheckAllButton changeToDoList={changeToDoList} toDoList={toDoList} />
+        <Form onSubmit={onSubmit} />
+      </div>
       <ToDos
         toDoList={toDoList}
         deleteToDo={deleteToDo}

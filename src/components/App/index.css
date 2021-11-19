@@ -1,3 +1,11 @@
 .buttonClearDisplay {
   display: none;
 }
+
+.form {
+  display: flex;
+  height: 35px;
+
+  margin: auto;
+  width: 45%;
+}
