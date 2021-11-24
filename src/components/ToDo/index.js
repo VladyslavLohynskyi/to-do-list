@@ -18,6 +18,7 @@ const ToDo = ({ deleteToDo, index, takeChekedProp, toDo }) => {
     <div className="outputToDo">
       <div>
         <input
+          style={{ cursor: "pointer" }}
           type="checkBox"
           onChange={changeCheked}
           checked={!toDo.checked}
