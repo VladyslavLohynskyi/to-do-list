@@ -1,35 +1,7 @@
-import { useState } from "react";
 import ToDo from "../ToDo/index";
 import "./index.css";
 
-import FilterButtons from "../FilterButtons";
-
-const ToDos = ({ toDoList, deleteToDo, takeChekedProp }) => {
-  const [buttonValue, setButtonValue] = useState({
-    buttonChecked: false,
-    buttonUnChecked: false,
-  });
-  const onClickCheked = () => {
-    setButtonValue({
-      buttonChecked: true,
-      buttonUnChecked: false,
-    });
-  };
-
-  const onClickUnCheked = () => {
-    setButtonValue({
-      buttonChecked: false,
-      buttonUnChecked: true,
-    });
-  };
-
-  const onClickAll = () => {
-    setButtonValue({
-      buttonChecked: false,
-      buttonUnChecked: false,
-    });
-  };
-
+const ToDos = ({ buttonValue, toDoList, deleteToDo, takeChekedProp }) => {
   function* createGenerator(start) {
     while (true) yield start++;
   }
@@ -74,12 +46,6 @@ const ToDos = ({ toDoList, deleteToDo, takeChekedProp }) => {
   return (
     <>
       <div className="outputToDos">{outputToDos()}</div>
-      <FilterButtons
-        onClickCheked={onClickCheked}
-        onClickUnCheked={onClickUnCheked}
-        onClickAll={onClickAll}
-        toDoList={toDoList}
-      />
     </>
   );
 };

@@ -19,7 +19,7 @@ const ClearCheckedButton = ({ toDoList, changeToDoList }) => {
   };
   return (
     <Button
-      className={changeClassName()}
+      className={`${changeClassName() ? changeClassName() : ""} buttonClear`}
       onClick={findIndexToDelete}
       name="Clear checked"
     />

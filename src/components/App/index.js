@@ -5,18 +5,56 @@ import ToDos from "../ToDos/index";
 import CheckAllButton from "../CheckAllButton/index";
 import ClearCheckedButton from "../ClearCheckedButton/index";
 import CountUnCheckedToDos from "../CountUnCheckedToDos";
+import FilterButtons from "../FilterButtons";
 
 import "./index.css";
 
 const App = () => {
-  const [toDoList, setToDoList] = useState(() => {
-    return JSON.parse(localStorage.getItem("toDolist") || "[]");
+  const [toDoList, setToDoList] = useState([]);
+  const [buttonValue, setButtonValue] = useState({
+    buttonChecked: false,
+    buttonUnChecked: false,
   });
+  const onClickCheked = () => {
+    setButtonValue({
+      buttonChecked: true,
+      buttonUnChecked: false,
+    });
+  };
+
+  const onClickUnCheked = () => {
+    setButtonValue({
+      buttonChecked: false,
+      buttonUnChecked: true,
+    });
+  };
+
+  const onClickAll = () => {
+    setButtonValue({
+      buttonChecked: false,
+      buttonUnChecked: false,
+    });
+  };
 
   useEffect(() => {
-    window.localStorage.setItem("toDoList", JSON.stringify(toDoList));
-  }, [toDoList]);
+    getLocalStorage();
+  }, []);
 
+  useEffect(() => {
+    savelocalStorage();
+  });
+
+  const savelocalStorage = () => {
+    localStorage.setItem("toDoList", JSON.stringify(toDoList));
+  };
+  const getLocalStorage = () => {
+    if (localStorage.getItem("toDoList") === null) {
+      localStorage.setItem("toDoList", JSON.stringify([]));
+    } else {
+      let todoLocal = JSON.parse(localStorage.getItem("toDoList"));
+      setToDoList(todoLocal);
+    }
+  };
   const deleteToDo = (index) => {
     const clearArr = toDoList.slice(0, index).concat(toDoList.slice(index + 1));
     setToDoList([...clearArr]);
@@ -38,7 +76,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <div className="app">
       <div className="form">
         <CheckAllButton changeToDoList={changeToDoList} toDoList={toDoList} />
         <Form onSubmit={onSubmit} />
@@ -47,10 +85,25 @@ const App = () => {
         toDoList={toDoList}
         deleteToDo={deleteToDo}
         takeChekedProp={takeChekedProp}
+        buttonValue={buttonValue}
       />
-      <CountUnCheckedToDos toDoList={toDoList} />
-      <ClearCheckedButton toDoList={toDoList} changeToDoList={changeToDoList} />
-    </>
+
+      <div className="footer">
+        <FilterButtons
+          className="buttonsFilterPosition "
+          onClickCheked={onClickCheked}
+          onClickUnCheked={onClickUnCheked}
+          onClickAll={onClickAll}
+          toDoList={toDoList}
+        />
+
+        <CountUnCheckedToDos toDoList={toDoList} />
+        <ClearCheckedButton
+          toDoList={toDoList}
+          changeToDoList={changeToDoList}
+        />
+      </div>
+    </div>
   );
 };
 

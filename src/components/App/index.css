@@ -6,6 +6,16 @@
   display: flex;
   height: 35px;
 
+  width: 100%;
+}
+
+.app {
+  width: 50%;
   margin: auto;
-  width: 45%;
+}
+
+.footer {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
 }
