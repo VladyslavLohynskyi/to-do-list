@@ -11,7 +11,7 @@ const ToDo = ({ deleteToDo, index, takeChekedProp, toDo }) => {
     } else {
       setChecked(true);
     }
-    takeChekedProp(checked, index, toDo.value);
+    takeChekedProp(checked, index, toDo);
   };
 
   return (
@@ -23,7 +23,7 @@ const ToDo = ({ deleteToDo, index, takeChekedProp, toDo }) => {
           onChange={changeCheked}
           checked={!toDo.checked}
         />
-        <p class="toDoValue">{toDo.value + " "}</p>
+        <p className="toDoValue">{toDo.value + " "}</p>
       </div>
       <Button
         onClick={() => {

@@ -2,14 +2,10 @@ import ToDo from "../ToDo/index";
 import "./index.css";
 
 const ToDos = ({ buttonValue, toDoList, deleteToDo, takeChekedProp }) => {
-  function* createGenerator(start) {
-    while (true) yield start++;
-  }
-  const generetor = createGenerator(1);
   const defaultTodo = (toDo) => (
     <ToDo
       buttonChecked={buttonValue.buttonChecked}
-      key={generetor.next().value}
+      key={toDo.id}
       toDo={toDo}
       index={toDoList.indexOf(toDo)}
       deleteToDo={deleteToDo}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import { v4 as uuid } from "uuid";
 import Form from "../Form/index";
 import ToDos from "../ToDos/index";
 import CheckAllButton from "../CheckAllButton/index";
@@ -61,13 +61,16 @@ const App = () => {
   };
 
   const onSubmit = (value) => {
-    setToDoList([{ value, checked: true }, ...toDoList]);
+    setToDoList([{ value, id: uuid(), checked: true }, ...toDoList]);
   };
 
-  const takeChekedProp = (checked, index, value) => {
+  const takeChekedProp = (checked, index, toDo) => {
     const checkedArr = toDoList
       .slice(0, index)
-      .concat({ value, checked }, toDoList.slice(index + 1));
+      .concat(
+        { value: toDo.value, id: toDo.id, checked },
+        toDoList.slice(index + 1)
+      );
     setToDoList(checkedArr);
   };
 
